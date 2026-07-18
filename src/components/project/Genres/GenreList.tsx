@@ -7,10 +7,15 @@ import {
   Spinner,
   Text,
 } from "@chakra-ui/react";
-import { UseGenres } from "../../../Hooks/UseGenres";
+import { UseGenres, type Genre } from "../../../Hooks/UseGenres";
 import { GetCroppedImagesUrl } from "../../../Services/GetCroppedImagesUrl";
+import type { PropsWithChildren } from "react";
 
-export const GenreList = () => {
+interface Props {
+  on_Click: (genre: Genre) => void;
+}
+
+export const GenreList = ({ on_Click }: Props) => {
   const { data: genres, isLoading, error } = UseGenres();
 
   if (isLoading) return <Spinner />;
@@ -27,7 +32,13 @@ export const GenreList = () => {
               borderRadius={8}
               src={GetCroppedImagesUrl(genre.image_background)}
             />
-            <Button fontSize={"lg"}>{genre.name}</Button>
+            <Button
+              variant={"ghost"}
+              onClick={() => on_Click(genre)}
+              fontSize={"lg"}
+            >
+              {genre.name}
+            </Button>
           </HStack>
         </ListItem>
       ))}

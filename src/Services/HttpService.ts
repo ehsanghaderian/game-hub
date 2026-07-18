@@ -1,3 +1,4 @@
+import type { AxiosRequestConfig } from "axios";
 import apiClient, { CanceledError } from "./ApiClient";
 
 interface Entity {
@@ -15,10 +16,11 @@ class HttpService {
     this.#endpoint = endpoint;
   }
 
-  GetAll<T>() {
+  GetAll<T>(requestConfig?: AxiosRequestConfig) {
     const controller = new AbortController();
     const request = apiClient.get<FetchResponse<T>>(this.#endpoint, {
       signal: controller.signal,
+      ...requestConfig,
     });
 
     return { request, cancel: () => controller.abort() };

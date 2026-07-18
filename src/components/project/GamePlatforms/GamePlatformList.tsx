@@ -31,7 +31,7 @@ export const GamePlatformList = ({ platforms }: Props) => {
       <HStack>
         {platforms.map(
           (platform) =>
-            platform.slug !== "nintendo" && (
+            platform.slug in iconMap && (
               <Icon
                 key={platform.id}
                 as={iconMap[platform.slug]}
