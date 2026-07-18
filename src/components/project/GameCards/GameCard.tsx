@@ -13,11 +13,7 @@ export const GameCard = ({ game }: Props) => {
   const { colorMode } = useColorMode();
   return (
     <>
-      <Card.Root
-        overflow={"hidden"}
-        borderRadius={10}
-        bg={colorMode === "light" ? "whitesmoke" : "gray.900"}
-      >
+      <Card.Root bg={colorMode === "light" ? "whitesmoke" : "gray.900"}>
         <Image src={GetCroppedImagesUrl(game.background_image)} />
         <CardBody>
           <Heading
