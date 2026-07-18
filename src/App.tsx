@@ -27,7 +27,10 @@ function App() {
 
       <Show when={showAside}>
         <GridItem area="aside" p={4}>
-          <GenreList on_Click={(genre: Genre) => setSelectedGenre(genre)} />
+          <GenreList
+            selectedGenre={selectedGenre}
+            on_Click={(genre: Genre) => setSelectedGenre(genre)}
+          />
         </GridItem>
       </Show>
 

@@ -13,9 +13,10 @@ import type { PropsWithChildren } from "react";
 
 interface Props {
   on_Click: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-export const GenreList = ({ on_Click }: Props) => {
+export const GenreList = ({ on_Click, selectedGenre }: Props) => {
   const { data: genres, isLoading, error } = UseGenres();
 
   if (isLoading) return <Spinner />;
@@ -33,6 +34,7 @@ export const GenreList = ({ on_Click }: Props) => {
               src={GetCroppedImagesUrl(genre.image_background)}
             />
             <Button
+              fontWeight={selectedGenre?.id === genre.id ? "bold" : "normal"}
               variant={"ghost"}
               onClick={() => on_Click(genre)}
               fontSize={"lg"}

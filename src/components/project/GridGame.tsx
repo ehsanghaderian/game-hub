@@ -28,7 +28,6 @@ export const GridGame = ({ selectedGenre }: Props) => {
           sm: 1,
           md: 2,
           lg: 3,
-          xl: 4,
         }}
         gap={10}
       >
