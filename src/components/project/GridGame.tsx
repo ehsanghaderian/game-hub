@@ -1,15 +1,14 @@
 import { SimpleGrid } from "@chakra-ui/react";
 import { UseGames } from "../../Hooks/UseGames";
 import { GameCard } from "./GameCards/GameCard";
+import { GameCardSkeleton } from "./GameCards/GameCardSkeleton";
 
 export const GridGame = () => {
   const { games, error, isLoading, setGames, setError } = UseGames();
+  const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
   return (
     <>
-      {isLoading && (
-        <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-      )}
       {error && <p className="text-red-400">error happened</p>}
 
       <SimpleGrid
@@ -22,6 +21,8 @@ export const GridGame = () => {
         }}
         gap={10}
       >
+        {isLoading &&
+          skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
         {games.map((game) => (
           <GameCard game={game} key={game.id}></GameCard>
         ))}

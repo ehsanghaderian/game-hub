@@ -11,7 +11,6 @@ interface Props {
 
 export const GameCard = ({ game }: Props) => {
   const { colorMode } = useColorMode();
-
   return (
     <>
       <Card.Root
