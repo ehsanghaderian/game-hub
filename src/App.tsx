@@ -12,10 +12,14 @@ import { GenreList } from "./components/project/Genres/GenreList";
 import { useState } from "react";
 import type { Genre } from "./Hooks/UseGenres";
 import { PlatformSelector } from "./components/project/GamePlatforms/PlatformSelector";
+import type { Platform } from "./Hooks/UsePlatforms";
 
 function App() {
   const showAside = useBreakpointValue({ base: false, lg: true });
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
+    null,
+  );
 
   return (
     <Grid
@@ -45,9 +49,15 @@ function App() {
         <Box ml={10}>
           {" "}
           {/* Add margin bottom for spacing */}
-          <PlatformSelector />
+          <PlatformSelector
+            selectedPlatform={selectedPlatform}
+            on_Click={(platform) => setSelectedPlatform(platform)}
+          />
         </Box>
-        <GridGame selectedGenre={selectedGenre}></GridGame>
+        <GridGame
+          selectedPlatform={selectedPlatform}
+          selectedGenre={selectedGenre}
+        ></GridGame>
       </GridItem>
     </Grid>
   );

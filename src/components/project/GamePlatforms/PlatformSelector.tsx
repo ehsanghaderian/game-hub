@@ -2,7 +2,12 @@ import { Button, Icon, Menu, Portal, Spinner } from "@chakra-ui/react";
 import { FaChevronDown } from "react-icons/fa";
 import { UsePlatform, type Platform } from "../../../Hooks/UsePlatforms";
 
-export const PlatformSelector = () => {
+interface Props {
+  on_Click: (platform: Platform) => void;
+  selectedPlatform: Platform | null;
+}
+
+export const PlatformSelector = ({ on_Click, selectedPlatform }: Props) => {
   const { data: platforms, isLoading, error } = UsePlatform();
 
   if (error) return null;
@@ -13,7 +18,7 @@ export const PlatformSelector = () => {
     <Menu.Root>
       <Menu.Trigger asChild>
         <Button variant="subtle">
-          <span>Platforms</span>
+          <span>{selectedPlatform?.name || "Platforms"}</span>
           <Icon
             as={FaChevronDown}
             ml={2}
@@ -27,6 +32,7 @@ export const PlatformSelector = () => {
           <Menu.Content>
             {platforms.map((platform) => (
               <Menu.Item
+                onClick={() => on_Click(platform)}
                 key={platform.id}
                 value="item-1"
                 _hover={{ bg: "gray.800" }}
