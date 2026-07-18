@@ -3,6 +3,7 @@ import { Card, CardBody, Heading, HStack, Image } from "@chakra-ui/react";
 import { GamePlatformList } from "../GamePlatforms/GamePlatformList";
 import { CriticScore } from "../GameCriticScores/CriticScore";
 import { useColorMode } from "../../ui/color-mode";
+import { GetCroppedImagesUrl } from "../../../Services/GetCroppedImagesUrl";
 
 interface Props {
   game: Game;
@@ -18,7 +19,7 @@ export const GameCard = ({ game }: Props) => {
         borderRadius={10}
         bg={colorMode === "light" ? "whitesmoke" : "gray.900"}
       >
-        <Image src={game.background_image} />
+        <Image src={GetCroppedImagesUrl(game.background_image)} />
         <CardBody>
           <Heading
             fontSize={{
