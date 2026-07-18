@@ -2,6 +2,7 @@ import {
   Box,
   Grid,
   GridItem,
+  HStack,
   Show,
   useBreakpointValue,
 } from "@chakra-ui/react";
@@ -13,10 +14,12 @@ import { useState } from "react";
 import type { Genre } from "./Hooks/UseGenres";
 import { PlatformSelector } from "./components/project/GamePlatforms/PlatformSelector";
 import type { Platform } from "./Hooks/UsePlatforms";
+import { SortSelector } from "./components/project/GamePlatforms/SortSelector";
 
 export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
+  sort: string | null;
 }
 function App() {
   const showAside = useBreakpointValue({ base: false, lg: true });
@@ -47,14 +50,17 @@ function App() {
       </Show>
 
       <GridItem area="main" p={4}>
-        <Box ml={10}>
+        <HStack ml={10} spaceX={5}>
           {" "}
-          {/* Add margin bottom for spacing */}
           <PlatformSelector
             selectedPlatform={gameQuery.platform}
             on_Click={(platform) => setGameQuery({ ...gameQuery, platform })}
           />
-        </Box>
+          <SortSelector
+            on_Click={(sort: string) => setGameQuery({ ...gameQuery, sort })}
+            selectedSort={gameQuery.sort}
+          ></SortSelector>
+        </HStack>
         <GridGame gameQuery={gameQuery}></GridGame>
       </GridItem>
     </Grid>
