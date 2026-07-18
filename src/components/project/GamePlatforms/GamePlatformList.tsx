@@ -1,4 +1,3 @@
-import type { GamePlatform } from "../../../Services/GameService";
 import { HStack, Icon } from "@chakra-ui/react";
 import {
   FaWindows,
@@ -11,6 +10,7 @@ import {
 import { MdPhoneIphone } from "react-icons/md";
 import { BsGlobe } from "react-icons/bs";
 import type { IconType } from "react-icons";
+import type { GamePlatform } from "../../../Hooks/UseGames";
 interface Props {
   platforms: GamePlatform[];
 }
