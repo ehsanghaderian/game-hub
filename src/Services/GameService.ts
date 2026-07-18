@@ -5,6 +5,7 @@ export interface Game {
   name: string;
   background_image: string;
   parent_platforms: { platform: GamePlatform }[];
+  metacritic: number;
 }
 
 export interface GamePlatform {

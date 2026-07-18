@@ -1,15 +1,23 @@
 import type { Game } from "../../../Services/GameService";
-import { Card, CardBody, Heading, Image } from "@chakra-ui/react";
+import { Card, CardBody, Heading, HStack, Image } from "@chakra-ui/react";
 import { GamePlatformList } from "../GamePlatforms/GamePlatformList";
+import { CriticScore } from "../GameCriticScores/CriticScore";
+import { useColorMode } from "../../ui/color-mode";
 
 interface Props {
   game: Game;
 }
 
 export const GameCard = ({ game }: Props) => {
+  const { colorMode } = useColorMode();
+
   return (
     <>
-      <Card.Root overflow={"hidden"} borderRadius={10}>
+      <Card.Root
+        overflow={"hidden"}
+        borderRadius={10}
+        bg={colorMode === "light" ? "whitesmoke" : "gray.900"}
+      >
         <Image src={game.background_image} />
         <CardBody>
           <Heading
@@ -21,11 +29,14 @@ export const GameCard = ({ game }: Props) => {
           >
             {game.name}
           </Heading>
-          <GamePlatformList
-            platforms={game.parent_platforms.map(
-              (platform) => platform.platform,
-            )}
-          ></GamePlatformList>
+          <HStack justifyContent={"space-between"}>
+            <GamePlatformList
+              platforms={game.parent_platforms.map(
+                (platform) => platform.platform,
+              )}
+            ></GamePlatformList>
+            <CriticScore score={game.metacritic} />
+          </HStack>
         </CardBody>
       </Card.Root>
     </>
