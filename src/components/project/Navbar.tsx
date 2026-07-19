@@ -1,4 +1,4 @@
-import { HStack, Image, Text } from "@chakra-ui/react";
+import { HStack, Text } from "@chakra-ui/react";
 import { ColorModeButton, useColorMode } from "../ui/color-mode";
 import { Searchbar } from "./Searchbars/Searchbar";
 import { GiGamepad } from "react-icons/gi";

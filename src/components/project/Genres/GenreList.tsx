@@ -2,16 +2,13 @@ import {
   Button,
   Flex,
   Heading,
-  HStack,
   Image,
   List,
   ListItem,
   Spinner,
-  Text,
 } from "@chakra-ui/react";
 import { UseGenres, type Genre } from "../../../Hooks/UseGenres";
 import { GetCroppedImagesUrl } from "../../../Services/GetCroppedImagesUrl";
-import type { PropsWithChildren } from "react";
 
 interface Props {
   on_Click: (genre: Genre) => void;

@@ -1,5 +1,5 @@
 import type { AxiosRequestConfig } from "axios";
-import apiClient, { CanceledError } from "./ApiClient";
+import apiClient from "./ApiClient";
 
 interface Entity {
   id: number;

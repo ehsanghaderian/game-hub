@@ -1,7 +1,5 @@
 import type { GameQuery } from "../App";
 import { UseData } from "./UseData";
-import type { Genre } from "./UseGenres";
-import type { Platform } from "./UsePlatforms";
 
 export interface Game {
   id: number;
@@ -9,6 +7,7 @@ export interface Game {
   background_image: string;
   parent_platforms: { platform: GamePlatform }[];
   metacritic: number;
+  rating_top: number;
 }
 
 export interface GamePlatform {

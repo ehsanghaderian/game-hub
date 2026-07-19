@@ -1,4 +1,4 @@
-import { Button, Icon, Menu, Portal, Spinner } from "@chakra-ui/react";
+import { Button, Icon, Menu, Portal } from "@chakra-ui/react";
 import { FaChevronDown } from "react-icons/fa";
 
 interface Props {

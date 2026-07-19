@@ -4,6 +4,7 @@ import { CriticScore } from "../GameCriticScores/CriticScore";
 import { useColorMode } from "../../ui/color-mode";
 import { GetCroppedImagesUrl } from "../../../Services/GetCroppedImagesUrl";
 import type { Game } from "../../../Hooks/UseGames";
+import { Emoji } from "../Emojies/Emoji";
 
 interface Props {
   game: Game;
@@ -26,6 +27,7 @@ export const GameCard = ({ game }: Props) => {
           </HStack>
 
           <Heading fontSize={"2xl"}>{game.name}</Heading>
+          <Emoji rating={game.rating_top}></Emoji>
         </CardBody>
       </Card.Root>
     </>
