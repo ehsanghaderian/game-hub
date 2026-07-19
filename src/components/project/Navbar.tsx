@@ -1,15 +1,25 @@
 import { HStack, Image, Text } from "@chakra-ui/react";
-import navIcon from "../../assets/controller.png";
-import { ColorModeButton } from "../ui/color-mode";
+import { ColorModeButton, useColorMode } from "../ui/color-mode";
+import { Searchbar } from "./Searchbars/Searchbar";
+import { GiGamepad } from "react-icons/gi";
 
-function Navbar() {
+interface Props {
+  on_submit: (searchText: string) => void;
+}
+
+function Navbar({ on_submit }: Props) {
+  const { colorMode } = useColorMode();
+
   return (
-    <HStack w="full" justify="space-between" p={4} bg="bg.subtle">
-      {/* Group image and text together */}
-      <HStack gap={2}>
-        <Image src={navIcon} boxSize={50} />
-        <Text>Nav bar</Text>
+    <HStack w="full" paddingY={4} paddingX={6} bg="bg.subtle" gap={10}>
+      <HStack gap={5}>
+        <GiGamepad
+          size="48px"
+          color={colorMode === "light" ? "black" : "gold"}
+        />
+        <Text letterSpacing={"10px"}>RAWG</Text>
       </HStack>
+      <Searchbar on_submit={on_submit} />
 
       <ColorModeButton />
     </HStack>
