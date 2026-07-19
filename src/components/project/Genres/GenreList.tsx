@@ -1,5 +1,7 @@
 import {
   Button,
+  Flex,
+  Heading,
   HStack,
   Image,
   List,
@@ -25,9 +27,12 @@ export const GenreList = ({ on_Click, selectedGenre }: Props) => {
 
   return (
     <List.Root listStyleType="none">
+      <Heading fontSize={"2xl"} marginBottom={3}>
+        Genres
+      </Heading>
       {genres.map((genre) => (
         <ListItem key={genre.id} paddingY={"5px"}>
-          <HStack>
+          <Flex alignItems="center" gap={0}>
             <Image
               boxSize={"32px"}
               borderRadius={8}
@@ -38,10 +43,12 @@ export const GenreList = ({ on_Click, selectedGenre }: Props) => {
               variant={"ghost"}
               onClick={() => on_Click(genre)}
               fontSize={"lg"}
+              whiteSpace={"normal"}
+              paddingLeft={2} // Add small padding after image
             >
               {genre.name}
             </Button>
-          </HStack>
+          </Flex>
         </ListItem>
       ))}
     </List.Root>
