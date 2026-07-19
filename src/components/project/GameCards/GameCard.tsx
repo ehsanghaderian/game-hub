@@ -16,16 +16,7 @@ export const GameCard = ({ game }: Props) => {
       <Card.Root bg={colorMode === "light" ? "whitesmoke" : "gray.900"}>
         <Image src={GetCroppedImagesUrl(game.background_image)} />
         <CardBody>
-          <Heading
-            fontSize={{
-              sm: "2xl",
-              md: "xl",
-              lg: "lg",
-            }}
-          >
-            {game.name}
-          </Heading>
-          <HStack justifyContent={"space-between"}>
+          <HStack justifyContent={"space-between"} marginBottom={3}>
             <GamePlatformList
               platforms={game.parent_platforms.map(
                 (platform) => platform.platform,
@@ -33,6 +24,8 @@ export const GameCard = ({ game }: Props) => {
             ></GamePlatformList>
             <CriticScore score={game.metacritic} />
           </HStack>
+
+          <Heading fontSize={"2xl"}>{game.name}</Heading>
         </CardBody>
       </Card.Root>
     </>

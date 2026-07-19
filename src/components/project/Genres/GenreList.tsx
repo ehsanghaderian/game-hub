@@ -27,14 +27,14 @@ export const GenreList = ({ on_Click, selectedGenre }: Props) => {
 
   return (
     <List.Root listStyleType="none">
-      <Heading fontSize={"2xl"} marginBottom={3}>
+      <Heading fontSize={"3xl"} marginBottom={4}>
         Genres
       </Heading>
       {genres.map((genre) => (
         <ListItem key={genre.id} paddingY={"5px"}>
           <Flex alignItems="center" gap={0}>
             <Image
-              boxSize={"32px"}
+              boxSize={"44px"}
               borderRadius={8}
               src={GetCroppedImagesUrl(genre.image_background)}
             />

@@ -31,7 +31,7 @@ export const GridGame = ({ gameQuery }: Props) => {
           md: 2,
           lg: 3,
         }}
-        gap={10}
+        gap={5}
       >
         {isLoading &&
           skeletons.map((skeleton) => (
