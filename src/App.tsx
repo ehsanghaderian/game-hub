@@ -11,15 +11,13 @@ import { GridGame } from "./components/project/Games/GridGame";
 import Navbar from "./components/project/Navbars/Navbar";
 import { GenreList } from "./components/project/Genres/GenreList";
 import { useState } from "react";
-import type { Genre } from "./Hooks/UseGenres";
-import type { Platform } from "./Hooks/UsePlatforms";
 import { GameHeading } from "./components/project/Games/GameHeading";
 import { SortSelector } from "./components/project/Games/GamePlatforms/SortSelector";
 import { PlatformSelector } from "./components/project/Games/GamePlatforms/PlatformSelector";
 
 export interface GameQuery {
-  genre: Genre | null;
-  platform: Platform | null;
+  genreId: number | null;
+  platformId: number | null;
   sort: string | null;
   searchText: string | null;
 }
@@ -50,8 +48,10 @@ function App() {
       <Show when={showAside}>
         <GridItem area="aside" p={4}>
           <GenreList
-            selectedGenre={gameQuery.genre}
-            on_Click={(genre: Genre) => setGameQuery({ ...gameQuery, genre })}
+            selectedGenreId={gameQuery.genreId}
+            on_Click={(genreId: number) =>
+              setGameQuery({ ...gameQuery, genreId })
+            }
           />
         </GridItem>
       </Show>
@@ -61,8 +61,10 @@ function App() {
           <GameHeading gameQuery={gameQuery} />
           <HStack spaceX={{ base: 2, md: 5 }}>
             <PlatformSelector
-              selectedPlatform={gameQuery.platform}
-              on_Click={(platform) => setGameQuery({ ...gameQuery, platform })}
+              selectedPlatformId={gameQuery.platformId}
+              on_Click={(platformId: number) =>
+                setGameQuery({ ...gameQuery, platformId })
+              }
             />
             <SortSelector
               on_Click={(sort: string) => setGameQuery({ ...gameQuery, sort })}

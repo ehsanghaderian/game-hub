@@ -1,6 +1,6 @@
 import type { GameQuery } from "../App";
 import type { FetchResponse } from "../Services/HttpService";
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import Create from "../Services/HttpService";
 
 export interface Game {
@@ -25,8 +25,8 @@ export const UseGames = (gameQuery: GameQuery) => {
     queryFn: ({ pageParam = 1 }) =>
       httpService.GetAll({
         params: {
-          genres: gameQuery.genre?.id,
-          platforms: gameQuery.platform?.id,
+          genres: gameQuery.genreId,
+          platforms: gameQuery.platformId,
           ordering: gameQuery.sort,
           search: gameQuery.searchText,
           page: pageParam,
