@@ -7,6 +7,7 @@ interface Entity {
 
 export interface FetchResponse<T> {
   count: number;
+  next: string | undefined;
   results: T[];
 }
 
