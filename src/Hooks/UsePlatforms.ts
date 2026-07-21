@@ -8,7 +8,8 @@ export interface Platform {
 }
 
 const httpService = Create<Platform>("platforms");
-export const UsePlatform = () => {
+
+export const UsePlatforms = () => {
   return useQuery<FetchResponse<Platform>, Error>({
     queryKey: ["platforms"],
     queryFn: httpService.GetAll,
