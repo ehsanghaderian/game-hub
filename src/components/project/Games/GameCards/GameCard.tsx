@@ -1,10 +1,10 @@
 import { Card, CardBody, Heading, HStack, Image } from "@chakra-ui/react";
 import { GamePlatformList } from "../GamePlatforms/GamePlatformList";
 import { CriticScore } from "../GameCriticScores/CriticScore";
-import { useColorMode } from "../../ui/color-mode";
-import { GetCroppedImagesUrl } from "../../../Services/GetCroppedImagesUrl";
-import type { Game } from "../../../Hooks/UseGames";
-import { Emoji } from "../Emojies/Emoji";
+import { useColorMode } from "../../../ui/color-mode";
+import { GetCroppedImagesUrl } from "../../../../Services/GetCroppedImagesUrl";
+import type { Game } from "../../../../Hooks/UseGames";
+import { Emoji } from "../../Emojies/Emoji";
 
 interface Props {
   game: Game;

@@ -5,42 +5,40 @@ interface Entity {
   id: number;
 }
 
-interface FetchResponse<T> {
+export interface FetchResponse<T> {
   count: number;
   results: T[];
 }
 
-class HttpService {
+class HttpService<T> {
   #endpoint = "";
   constructor(endpoint: string) {
     this.#endpoint = endpoint;
   }
 
-  GetAll<T>(requestConfig?: AxiosRequestConfig) {
-    const controller = new AbortController();
-    const request = apiClient.get<FetchResponse<T>>(this.#endpoint, {
-      signal: controller.signal,
-      ...requestConfig,
-    });
+  GetAll = (requestConfig?: AxiosRequestConfig) => {
+    return apiClient
+      .get<FetchResponse<T>>(this.#endpoint, {
+        ...requestConfig,
+      })
+      .then((res) => res.data);
+  };
 
-    return { request, cancel: () => controller.abort() };
-  }
-
-  DeleteUser(entityId: number) {
+  DeleteUser = (entityId: number) => {
     return apiClient.delete(this.#endpoint + "/" + entityId);
-  }
+  };
 
-  Add<T>(newEntity: T) {
+  Add = (newEntity: T) => {
     return apiClient.post(this.#endpoint, newEntity);
-  }
+  };
 
-  Update<T extends Entity>(updatedEntity: T) {
+  Update = <T extends Entity>(updatedEntity: T) => {
     return apiClient.patch(
       this.#endpoint + "/" + updatedEntity.id,
       updatedEntity,
     );
-  }
+  };
 }
 
-const Create = (endpoint: string) => new HttpService(endpoint);
+const Create = <T>(endpoint: string) => new HttpService<T>(endpoint);
 export default Create;

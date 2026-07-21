@@ -27,7 +27,7 @@ export const GenreList = ({ on_Click, selectedGenre }: Props) => {
       <Heading fontSize={"3xl"} marginBottom={4}>
         Genres
       </Heading>
-      {genres.map((genre) => (
+      {genres?.results?.map((genre) => (
         <ListItem key={genre.id} paddingY={"5px"}>
           <Flex alignItems="center" gap={0}>
             <Image
@@ -41,7 +41,6 @@ export const GenreList = ({ on_Click, selectedGenre }: Props) => {
               onClick={() => on_Click(genre)}
               fontSize={"lg"}
               whiteSpace={"normal"}
-              paddingLeft={2} // Add small padding after image
             >
               {genre.name}
             </Button>

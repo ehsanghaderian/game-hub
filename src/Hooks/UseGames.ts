@@ -1,5 +1,7 @@
 import type { GameQuery } from "../App";
-import { UseData } from "./UseData";
+import type { FetchResponse } from "../Services/HttpService";
+import { useQuery } from "@tanstack/react-query";
+import Create from "../Services/HttpService";
 
 export interface Game {
   id: number;
@@ -16,16 +18,18 @@ export interface GamePlatform {
   slug: string;
 }
 
-export const UseGames = (gameQuery: GameQuery) =>
-  UseData<Game>(
-    "games",
-    {
-      params: {
-        genres: gameQuery.genre?.id,
-        platforms: gameQuery.platform?.id,
-        ordering: gameQuery.sort,
-        search: gameQuery.searchText,
-      },
-    },
-    [gameQuery],
-  );
+const httpService = Create<Game>("games");
+export const UseGames = (gameQuery: GameQuery) => {
+  return useQuery<FetchResponse<Game>, Error>({
+    queryKey: ["games", gameQuery],
+    queryFn: () =>
+      httpService.GetAll({
+        params: {
+          genres: gameQuery.genre?.id,
+          platforms: gameQuery.platform?.id,
+          ordering: gameQuery.sort,
+          search: gameQuery.searchText,
+        },
+      }),
+  });
+};

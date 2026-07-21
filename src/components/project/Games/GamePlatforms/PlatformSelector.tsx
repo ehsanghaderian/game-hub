@@ -1,6 +1,6 @@
 import { Button, Icon, Menu, Portal } from "@chakra-ui/react";
 import { FaChevronDown } from "react-icons/fa";
-import { UsePlatform, type Platform } from "../../../Hooks/UsePlatforms";
+import { UsePlatform, type Platform } from "../../../../Hooks/UsePlatforms";
 
 interface Props {
   on_Click: (platform: Platform) => void;
@@ -30,7 +30,7 @@ export const PlatformSelector = ({ on_Click, selectedPlatform }: Props) => {
       <Portal>
         <Menu.Positioner>
           <Menu.Content>
-            {platforms.map((platform) => (
+            {platforms?.results?.map((platform) => (
               <Menu.Item
                 onClick={() => on_Click(platform)}
                 key={platform.id}

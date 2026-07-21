@@ -7,15 +7,15 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import "./App.css";
-import { GridGame } from "./components/project/GridGame";
-import Navbar from "./components/project/Navbar";
+import { GridGame } from "./components/project/Games/GridGame";
+import Navbar from "./components/project/Navbars/Navbar";
 import { GenreList } from "./components/project/Genres/GenreList";
 import { useState } from "react";
 import type { Genre } from "./Hooks/UseGenres";
-import { PlatformSelector } from "./components/project/GamePlatforms/PlatformSelector";
 import type { Platform } from "./Hooks/UsePlatforms";
-import { SortSelector } from "./components/project/GamePlatforms/SortSelector";
-import { GameHeading } from "./components/project/GameHeading";
+import { GameHeading } from "./components/project/Games/GameHeading";
+import { SortSelector } from "./components/project/Games/GamePlatforms/SortSelector";
+import { PlatformSelector } from "./components/project/Games/GamePlatforms/PlatformSelector";
 
 export interface GameQuery {
   genre: Genre | null;
