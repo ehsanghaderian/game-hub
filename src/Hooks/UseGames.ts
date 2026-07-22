@@ -1,7 +1,7 @@
-import type { GameQuery } from "../App";
 import type { FetchResponse } from "../Services/HttpService";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import Create from "../Services/HttpService";
+import useGameStore from "../Stores/GameStore";
 
 export interface Game {
   id: number;
@@ -19,7 +19,8 @@ export interface GamePlatform {
 }
 
 const httpService = Create<Game>("games");
-export const UseGames = (gameQuery: GameQuery) => {
+export const UseGames = () => {
+  const gameQuery = useGameStore((s) => s.gameQuery);
   return useInfiniteQuery<FetchResponse<Game>, Error>({
     queryKey: ["games", gameQuery],
     queryFn: ({ pageParam = 1 }) =>

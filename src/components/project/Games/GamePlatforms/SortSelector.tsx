@@ -1,12 +1,10 @@
 import { Button, Icon, Menu, Portal } from "@chakra-ui/react";
 import { FaChevronDown } from "react-icons/fa";
+import useGameStore from "../../../../Stores/GameStore";
 
-interface Props {
-  on_Click: (sort: string) => void;
-  selectedSort: string | null;
-}
-
-export const SortSelector = ({ on_Click, selectedSort }: Props) => {
+export const SortSelector = () => {
+  const selectedSort = useGameStore((s) => s.gameQuery.sort);
+  const setSelectedSort = useGameStore((s) => s.setSort);
   const sortOrders = [
     { value: "", label: "Relevance" },
     { value: "-added", label: "Date added" },
@@ -38,7 +36,7 @@ export const SortSelector = ({ on_Click, selectedSort }: Props) => {
           <Menu.Content>
             {sortOrders.map((sort) => (
               <Menu.Item
-                onClick={() => on_Click(sort.value)}
+                onClick={() => setSelectedSort(sort.value)}
                 key={sort.value}
                 value={sort.value}
                 _hover={{ bg: "gray.800" }}
