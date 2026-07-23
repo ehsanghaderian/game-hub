@@ -1,16 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import Create from "../Services/HttpService";
+import type { Game } from "../entities/Game";
 
-export interface GameDetail {
-  id: number;
-  name: string;
-  slug: string;
-  description_raw: string;
-}
-
-const httpService = Create<GameDetail>("games");
+const httpService = Create<Game>("games");
 export const useGameDetail = (slug: string) => {
-  return useQuery<GameDetail, Error>({
+  return useQuery<Game, Error>({
     queryKey: ["games", slug],
     queryFn: () => httpService.Get(slug),
   });
