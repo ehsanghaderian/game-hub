@@ -2,22 +2,7 @@ import type { FetchResponse } from "../Services/HttpService";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import Create from "../Services/HttpService";
 import useGameStore from "../Stores/GameStore";
-
-export interface Game {
-  id: number;
-  name: string;
-  slug: string;
-  background_image: string;
-  parent_platforms: { platform: GamePlatform }[];
-  metacritic: number;
-  rating_top: number;
-}
-
-export interface GamePlatform {
-  id: number;
-  name: string;
-  slug: string;
-}
+import type { Game } from "../entities/Game";
 
 const httpService = Create<Game>("games");
 export const UseGames = () => {

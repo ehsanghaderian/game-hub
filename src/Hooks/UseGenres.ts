@@ -1,10 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import Create, { type FetchResponse } from "../Services/HttpService";
-export interface Genre {
-  id: number;
-  name: string;
-  image_background: string;
-}
+import type { Genre } from "../entities/Genre";
 const httpService = Create<Genre>("genres");
 
 export const UseGenres = () => {

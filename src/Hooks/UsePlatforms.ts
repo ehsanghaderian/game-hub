@@ -1,11 +1,6 @@
 import Create, { type FetchResponse } from "../Services/HttpService";
 import { useQuery } from "@tanstack/react-query";
-
-export interface Platform {
-  id: number;
-  name: string;
-  slug: string;
-}
+import type { Platform } from "../entities/Platform";
 
 const httpService = Create<Platform>("platforms");
 
