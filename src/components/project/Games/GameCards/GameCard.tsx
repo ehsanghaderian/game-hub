@@ -5,6 +5,7 @@ import { useColorMode } from "../../../ui/color-mode";
 import { GetCroppedImagesUrl } from "../../../../Services/GetCroppedImagesUrl";
 import type { Game } from "../../../../Hooks/UseGames";
 import { Emoji } from "../../Emojies/Emoji";
+import { Link } from "react-router-dom";
 
 interface Props {
   game: Game;
@@ -25,8 +26,9 @@ export const GameCard = ({ game }: Props) => {
             ></GamePlatformList>
             <CriticScore score={game.metacritic} />
           </HStack>
-
-          <Heading fontSize={"2xl"}>{game.name}</Heading>
+          <Link to={"games/" + game.slug}>
+            <Heading fontSize={"2xl"}>{game.name}</Heading>
+          </Link>
           <Emoji rating={game.rating_top}></Emoji>
         </CardBody>
       </Card.Root>

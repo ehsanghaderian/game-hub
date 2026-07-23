@@ -25,6 +25,10 @@ class HttpService<T> {
       .then((res) => res.data);
   };
 
+  Get = (id: number | string) => {
+    return apiClient.get<T>(this.#endpoint + "/" + id).then((res) => res.data);
+  };
+
   DeleteUser = (entityId: number) => {
     return apiClient.delete(this.#endpoint + "/" + entityId);
   };
