@@ -28,7 +28,9 @@ export const GameAttributes = ({ game }: Props) => {
       </DefinitionItem>
 
       <DefinitionItem term="Score">
-        <CriticScore score={game.metacritic}></CriticScore>
+        {game.metacritic ? (
+          <CriticScore score={game.metacritic}></CriticScore>
+        ) : null}
       </DefinitionItem>
     </SimpleGrid>
   );
