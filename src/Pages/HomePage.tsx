@@ -4,7 +4,6 @@ import {
   HStack,
   Show,
   useBreakpointValue,
-  VStack,
   Box,
 } from "@chakra-ui/react";
 import { GenreList } from "../components/project/Genres/GenreList";
@@ -39,19 +38,15 @@ export const HomePage = () => {
         <Box
           ml={{ base: 2, md: 10 }}
           mr={{ base: 2, md: 0 }}
-          mb={{ base: 4, md: 1 }} // More bottom margin on mobile
-          mt={{ base: 2, md: 0 }} // Add top margin on mobile
+          mb={{ base: 4, md: 1 }}
+          mt={{ base: 2, md: 0 }}
           width="100%"
           maxWidth="100%"
         >
           <Box mb={2}>
             <GameHeading />
           </Box>
-          <HStack
-            width="100%"
-            flexWrap="wrap"
-            gridGap={{ base: 2, md: 5 }} // Use gridGap instead of spacing
-          >
+          <HStack width="100%" flexWrap="wrap" gridGap={{ base: 2, md: 5 }}>
             <PlatformSelector />
             <SortSelector />
           </HStack>

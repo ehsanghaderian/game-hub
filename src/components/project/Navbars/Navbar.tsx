@@ -1,4 +1,4 @@
-import { HStack, Text } from "@chakra-ui/react";
+import { HStack, Text, useBreakpointValue } from "@chakra-ui/react";
 import { ColorModeButton, useColorMode } from "../../ui/color-mode";
 import { Searchbar } from "../Searchbars/Searchbar";
 import { GiGamepad } from "react-icons/gi";
@@ -10,15 +10,20 @@ function Navbar() {
   const setSearch = useGameStore((s) => s.setSearch);
 
   return (
-    <HStack w="full" paddingY={4} paddingX={6} bg="bg.subtle" gap={10}>
+    <HStack w="full" paddingY={4} paddingX={4} bg="bg.subtle" gap={5}>
       <Link to={"/"}>
         {" "}
-        <HStack gap={5}>
+        <HStack gap={3}>
           <GiGamepad
-            size="48px"
+            size={"48px"}
             color={colorMode === "light" ? "black" : "gold"}
           />
-          <Text letterSpacing={"10px"}>RAWG</Text>
+          <Text
+            fontSize={{ md: "lg", sm: "sm" }}
+            letterSpacing={{ md: "10px", sm: "10px" }}
+          >
+            RAWG
+          </Text>
         </HStack>
       </Link>
 

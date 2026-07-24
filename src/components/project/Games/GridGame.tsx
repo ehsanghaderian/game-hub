@@ -43,7 +43,6 @@ export const GridGame = () => {
             lg: 3,
           }}
           gridGap={{
-            // Use gridGap instead of gap or spacing
             base: 5,
             sm: 4,
             md: 5,
