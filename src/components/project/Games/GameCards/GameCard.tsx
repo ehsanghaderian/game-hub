@@ -3,7 +3,7 @@ import { GamePlatformList } from "../GamePlatforms/GamePlatformList";
 import { CriticScore } from "../GameCriticScores/CriticScore";
 import { useColorMode } from "../../../ui/color-mode";
 import { GetCroppedImagesUrl } from "../../../../Services/GetCroppedImagesUrl";
-import type { Game } from "../../../../entities/Game";
+import type Game from "../../../../entities/Game";
 import { Emoji } from "../../Emojies/Emoji";
 import { Link } from "react-router-dom";
 
@@ -15,7 +15,12 @@ export const GameCard = ({ game }: Props) => {
   const { colorMode } = useColorMode();
   return (
     <>
-      <Card.Root bg={colorMode === "light" ? "whitesmoke" : "gray.900"}>
+      <Card.Root
+        bg={colorMode === "light" ? "whitesmoke" : "gray.900"}
+        height={"100%"}
+        display="flex"
+        flexDirection="column"
+      >
         <Image src={GetCroppedImagesUrl(game.background_image)} />
         <CardBody>
           <HStack justifyContent={"space-between"} marginBottom={3}>

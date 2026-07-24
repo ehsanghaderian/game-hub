@@ -1,6 +1,6 @@
 import Create, { type FetchResponse } from "../Services/HttpService";
 import { useQuery } from "@tanstack/react-query";
-import type { Platform } from "../entities/Platform";
+import type Platform from "../entities/Platform";
 
 const httpService = Create<Platform>("platforms");
 

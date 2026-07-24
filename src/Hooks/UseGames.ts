@@ -2,7 +2,7 @@ import type { FetchResponse } from "../Services/HttpService";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import Create from "../Services/HttpService";
 import useGameStore from "../Stores/GameStore";
-import type { Game } from "../entities/Game";
+import type Game from "../entities/Game";
 
 const httpService = Create<Game>("games");
 export const UseGames = () => {

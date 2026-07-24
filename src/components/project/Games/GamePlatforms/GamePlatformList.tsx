@@ -10,10 +10,10 @@ import {
 import { MdPhoneIphone } from "react-icons/md";
 import { BsGlobe } from "react-icons/bs";
 import type { IconType } from "react-icons";
-import type { GamePlatform } from "../../../../Hooks/UseGames";
+import type Platform from "../../../../entities/Platform";
 
 interface Props {
-  platforms: GamePlatform[];
+  platforms: Platform[];
 }
 
 export const GamePlatformList = ({ platforms }: Props) => {

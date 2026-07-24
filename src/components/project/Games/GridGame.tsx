@@ -1,4 +1,4 @@
-import { SimpleGrid, Spinner } from "@chakra-ui/react";
+import { SimpleGrid, Spinner, Box } from "@chakra-ui/react";
 import { UseGames } from "../../../Hooks/UseGames";
 import { GameCard } from "./GameCards/GameCard";
 import { GameCardSkeleton } from "./GameCards/GameCardSkeleton";
@@ -20,22 +20,36 @@ export const GridGame = () => {
     games?.pages.reduce((total, page) => total + page.results.length, 0) || 0;
 
   return (
-    <>
+    <Box width="100%" maxWidth="100%" overflowX="hidden">
       {error && <p className="text-red-400">error happened</p>}
       <InfiniteScroll
         dataLength={fetchedGamesCount}
         hasMore={!!hasNextPage}
         next={fetchNextPage}
         loader={<Spinner />}
+        style={{ overflow: "visible" }}
       >
         <SimpleGrid
-          padding={10}
+          padding={{
+            base: 2,
+            sm: 4,
+            md: 6,
+            lg: 10,
+          }}
           columns={{
-            sm: 1,
+            base: 1,
+            sm: 2,
             md: 2,
             lg: 3,
           }}
-          gap={5}
+          gridGap={{
+            // Use gridGap instead of gap or spacing
+            base: 5,
+            sm: 4,
+            md: 5,
+          }}
+          width="100%"
+          maxWidth="100%"
         >
           {isLoading &&
             skeletons.map((skeleton) => (
@@ -47,13 +61,13 @@ export const GridGame = () => {
             <React.Fragment key={index}>
               {page.results?.map((game) => (
                 <GameCardContainer key={game.id}>
-                  <GameCard game={game}></GameCard>
+                  <GameCard game={game} />
                 </GameCardContainer>
               ))}
             </React.Fragment>
           ))}
         </SimpleGrid>
       </InfiniteScroll>
-    </>
+    </Box>
   );
 };
