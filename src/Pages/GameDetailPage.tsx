@@ -16,7 +16,7 @@ export const GameDetailPage = () => {
     <>
       <SimpleGrid columns={{ base: 1, md: 2 }} gap={4}>
         <GridItem>
-          <Heading fontSize={"4xl"}>{game.slug}</Heading>
+          <Heading fontSize={"4xl"}>{game.name}</Heading>
           <ExpandableText>{game.description_raw}</ExpandableText>
           <GameAttributes game={game} />
         </GridItem>

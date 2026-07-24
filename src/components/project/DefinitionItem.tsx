@@ -9,7 +9,7 @@ export const DefinitionItem = ({ term, children }: Props) => {
   return (
     <>
       <Box paddingY={5} fontWeight={400} fontSize={"lg"}>
-        <Heading as={"dt"} fontSize={"md"} color={"gray.600"}>
+        <Heading as={"dt"} fontSize={"md"} color={"gray.500"}>
           {term}
         </Heading>
         <dd>{children}</dd>

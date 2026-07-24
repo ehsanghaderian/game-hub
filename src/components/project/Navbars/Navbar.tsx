@@ -1,7 +1,7 @@
-import { HStack, Text } from "@chakra-ui/react";
+import { HStack, Image, Text, Box } from "@chakra-ui/react";
 import { ColorModeButton, useColorMode } from "../../ui/color-mode";
 import { Searchbar } from "../Searchbars/Searchbar";
-import { GiGamepad } from "react-icons/gi";
+import navImage from "../../../assets/controller.png";
 import useGameStore from "../../../Stores/GameStore";
 import { Link } from "react-router-dom";
 
@@ -12,24 +12,25 @@ function Navbar() {
   return (
     <HStack w="full" paddingY={4} paddingX={4} bg="bg.subtle" gap={5}>
       <Link to={"/"}>
-        {" "}
-        <HStack gap={3}>
-          <GiGamepad
-            size={"48px"}
-            color={colorMode === "light" ? "black" : "gold"}
-          />
+        <HStack gap={3} flexShrink={0}>
+          <Image boxSize={{ base: "24px", md: "32px" }} src={navImage} />
           <Text
-            fontSize={{ md: "lg", sm: "sm" }}
-            letterSpacing={{ md: "10px", sm: "10px" }}
+            fontSize={{ base: "xs", sm: "sm", md: "lg" }}
+            letterSpacing={{ base: "5px", md: "10px" }}
+            display={{ base: "none", sm: "block" }}
           >
-            RAWG
+            GAMEHUB
           </Text>
         </HStack>
       </Link>
 
-      <Searchbar on_submit={(searchText: string) => setSearch(searchText)} />
+      <Box flex={1} minW={0}>
+        <Searchbar on_submit={(searchText: string) => setSearch(searchText)} />
+      </Box>
 
-      <ColorModeButton />
+      <Box flexShrink={0}>
+        <ColorModeButton />
+      </Box>
     </HStack>
   );
 }
