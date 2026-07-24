@@ -38,7 +38,7 @@ export const GridGame = () => {
           }}
           columns={{
             base: 1,
-            sm: 1,
+            sm: 2,
             md: 2,
             lg: 3,
           }}

@@ -1,12 +1,11 @@
 import { HStack, Image, Text, Box } from "@chakra-ui/react";
-import { ColorModeButton, useColorMode } from "../../ui/color-mode";
+import { ColorModeButton } from "../../ui/color-mode";
 import { Searchbar } from "../Searchbars/Searchbar";
 import navImage from "../../../assets/controller.png";
 import useGameStore from "../../../Stores/GameStore";
 import { Link } from "react-router-dom";
 
 function Navbar() {
-  const { colorMode } = useColorMode();
   const setSearch = useGameStore((s) => s.setSearch);
 
   return (
