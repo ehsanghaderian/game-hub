@@ -48,10 +48,10 @@ I'm a backend developer (.NET Core, 4+ years) currently expanding into frontend 
 
 ## Screenshots
 
-![alt text](image-2.png)
-![alt text](image-3.png)
-![alt text](image-5.png)
-![alt text](image-4.png)
+![alt text](images/image-2.png)
+![alt text](images/image-3.png)
+![alt text](images/image-5.png)
+![alt text](images/image-4.png)
 
 ## Running Locally
 
@@ -74,4 +74,4 @@ Currently building a second project — a full-stack SaaS application with a .NE
 
 ---
 
-**Connect with me:** [LinkedIn](your-linkedin-link) | Open to remote opportunities and freelance projects.
+**Connect with me:** [LinkedIn](https://www.linkedin.com/in/ehsan-ghaderian-24b83222b/) | Open to remote opportunities and freelance projects.
