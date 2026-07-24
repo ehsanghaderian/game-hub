@@ -10,11 +10,13 @@ import {
 import { UseGenres } from "../../../Hooks/UseGenres";
 import { GetCroppedImagesUrl } from "../../../Services/GetCroppedImagesUrl";
 import useGameStore from "../../../Stores/GameStore";
+import useSidebarShowStore from "../../../Stores/SidebarShowStore";
 
 export const GenreList = () => {
   const { data: genres, isLoading, error } = UseGenres();
   const selectedGenreId = useGameStore((s) => s.gameQuery.genreId);
   const setGenreId = useGameStore((s) => s.setGenreId);
+  const setShowSideBar = useSidebarShowStore((s) => s.setShowSideBar);
 
   if (isLoading) return <Spinner />;
 
@@ -36,7 +38,10 @@ export const GenreList = () => {
             <Button
               fontWeight={selectedGenreId === genre.id ? "bold" : "normal"}
               variant={"ghost"}
-              onClick={() => setGenreId(genre.id)}
+              onClick={() => {
+                setGenreId(genre.id);
+                setShowSideBar(false);
+              }}
               fontSize={"lg"}
               whiteSpace={"normal"}
             >
