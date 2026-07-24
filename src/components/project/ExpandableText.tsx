@@ -18,7 +18,7 @@ export const ExpandableText = ({ children }: Props) => {
     : children.substring(0, maxHeight) + "...";
 
   return (
-    <Text>
+    <Text fontWeight={"100"} fontSize={"lg"} mt={5}>
       {summary}{" "}
       <Button
         size={"2xs"}
