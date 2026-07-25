@@ -12,10 +12,13 @@ import { SortSelector } from "../components/project/Games/GamePlatforms/SortSele
 import { PlatformSelector } from "../components/project/Games/GamePlatforms/PlatformSelector";
 import { GridGame } from "../components/project/Games/GridGame";
 import useSidebarShowStore from "../Stores/SidebarShowStore";
+import { useColorMode } from "../components/ui/color-mode";
 
 export const HomePage = () => {
   const showAside = useBreakpointValue({ base: false, lg: true });
   const showSideBar = useSidebarShowStore((s) => s.showSidebar);
+  const colorMode = useColorMode();
+  const isLight = colorMode.colorMode === "light";
 
   return (
     <Grid
@@ -32,7 +35,7 @@ export const HomePage = () => {
     >
       <Show when={showAside || showSideBar}>
         {showSideBar ? (
-          <Box padding={5} bg={"gray.950"}>
+          <Box padding={5} bg={isLight ? "gray.50" : "gray.950"}>
             <GenreList />
           </Box>
         ) : (
